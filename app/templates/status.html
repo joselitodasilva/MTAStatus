@@ -1,16 +1,32 @@
 {% extends "layout.html" %}
 {% block body %}
+
+<section id="left">
 <table>
-<caption>MTA {{title}} Status. fetched at {{timestamp}} </caption>
-<col><col><col>
+<caption>MTA {{title}} Status. <small> fetched at {{timestamp}} </small> </caption>
 <thead>
 <tr><th>Line Name <th>Status <th>details
 </thead>
 <tbody>
  {% for line in lines %}
-<tr><td>{{ line.name }} <td>{{ line.status }}<td>{% autoescape off %} {{line.text}} {% endautoescape %}
+<tr><td id="{{line.name}}">{{ line.name }} <td>{{ line.status }}<td class="text">{% autoescape off %} {{line.text}} {% endautoescape %}
 {% endfor %}
 </tbody>
 </table>
+
+</section>
+
+<section id="right">
+
+<nav id="nav">
+<ul>
+       {% for line in lines %}
+		 <li><a href="#{{line.name}}">{{line.name}}</a></li>
+	{% endfor %}
+     </ul>
+</nav>
+</section>
+
+
 
 {% endblock %}

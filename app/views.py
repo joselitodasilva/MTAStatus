@@ -15,8 +15,8 @@ def fetch_iterate(service):
 	global doc,times
 	#if multiple requests occur within the same given seconds interval
 	#they'll get the information from the same feed fetched
-	#to avoid flooding concurrents downloads of the feed
-	if datetime.now() > times[0]['lastfetch'] + timedelta(seconds=0): 
+	#to improve speed and avoid flooding concurrents downloads of the feed
+	if datetime.now() > times[0]['lastfetch'] + timedelta(seconds=5): 
 		u = urlopen('http://web.mta.info/status/serviceStatus.txt')
 		doc = parse(u)
 		times[0]['lastfetch'] = datetime.now()
