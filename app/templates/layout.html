@@ -1,0 +1,45 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <title>MTA Transit Status</title>
+  <meta name="description" content="MTA Transit Status">
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">	
+</head>
+
+<body>
+    <div id="wrapper">
+    	<header>
+            <h1>Pick your MTA transit service</h1>
+            <nav>
+		<form action="/redirect" method=post>
+                <select name="service_chosen">
+		<option value="none">Select Service</option>
+                <option value="subway">Subway</option>
+                <option value="bus">Bus</option>
+                <option value="bt">BT</option>
+                <option value="lirr">LiRR</option>
+                <option value="metronorth">MetroNorth</option>
+                <input type=submit value="go">
+                </form>
+	    </nav>
+        </header>
+        
+        <div id="core" class="clearfix">
+            <section id="left">
+		{% block body %}{% endblock %}	
+            </section>
+            
+            <section id="right">
+                <p>
+		&nbsp
+                </p>
+            </section>
+        </div>
+        
+        <footer>
+            <p></p>
+        </footer>
+    </div>
+
+</body>
+</html>

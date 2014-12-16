@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block body %}
+<table>
+<caption>MTA {{title}} Status. fetched at {{timestamp}} </caption>
+<col><col><col>
+<thead>
+<tr><th>Line Name <th>Status <th>details
+</thead>
+<tbody>
+ {% for line in lines %}
+<tr><td>{{ line.name }} <td>{{ line.status }}<td>{% autoescape off %} {{line.text}} {% endautoescape %}
+{% endfor %}
+</tbody>
+</table>
+
+{% endblock %}
